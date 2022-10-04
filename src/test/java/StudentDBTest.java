@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,8 +10,7 @@ class StudentDBTest {
     public void getAllStudents() {
         //given
         Students student = new Students(5, "peter");
-        ArrayList<Students> students = new ArrayList<>();
-        students.add(student);
+        ArrayList<Students> students = new ArrayList<>(List.of(student));
         StudentDB studentdb = new StudentDB(students);
         //when
         ArrayList<Students> actual = studentdb.getAllStudents();
@@ -22,8 +22,7 @@ class StudentDBTest {
    void studentToString() {
         //given
         Students student = new Students(5, "peter");
-        ArrayList<Students> students = new ArrayList<>();
-        students.add(student);
+        ArrayList<Students> students = new ArrayList<>(List.of(student));
         StudentDB studentdb = new StudentDB(students);
         //when
         String actual = studentdb.toString();
@@ -38,8 +37,7 @@ class StudentDBTest {
         //given
         int id = 1;
         Students student = new Students(5, "peter");
-        ArrayList<Students> students = new ArrayList<>();
-        students.add(student);
+        ArrayList<Students> students = new ArrayList<>(List.of(student));
         StudentDB studentdb = new StudentDB(students);
         String expectedMessage = "Kein Student gefunden";
         //when
@@ -58,8 +56,7 @@ class StudentDBTest {
         //given
         int id = 5;
         Students student = new Students(5, "peter");
-        ArrayList<Students> students = new ArrayList<>();
-        students.add(student);
+        ArrayList<Students> students = new ArrayList<>(List.of(student));
         StudentDB studentdb = new StudentDB(students);
 
         //when
@@ -68,4 +65,7 @@ class StudentDBTest {
         //then
         assertEquals(student,actual);
     }
+
+    @Test
+    void addStudent() {}
 }

@@ -34,4 +34,23 @@ public class StudentDB {
         }
         throw new IdNotFoundException("Kein Student gefunden");
     }
+
+    public void addStudent(Students student) {
+        int id = student.getId();
+        for (Students s : allStudents) {
+            if (s.getId() == id) {
+                throw new RuntimeException("ID bereits vorhanden");
+            }
+        }
+        allStudents.add(student);
+    }
+
+    public void removeStudent(int id) {
+        for (Students student : allStudents) {
+            if (student.getId() == id) {
+                allStudents.remove(student);
+                return;
+            }
+        }
+    }
 }

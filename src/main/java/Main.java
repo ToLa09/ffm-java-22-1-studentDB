@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,13 +20,18 @@ public class Main {
         Students student1 = new Students(1 , "peter");
         Students student2 = new Students(2 , "Hans");
         Students student3 = new Students(3 , "Klaus");
+        Students student4 = new Students(3 , "Karl");
 
-        ArrayList<Students> students = new ArrayList<>();
-        students.add(student1);
-        students.add(student2);
-        students.add(student3);
+        ArrayList<Students> students = new ArrayList<>(List.of(student1, student2, student3));
 
         StudentDB studentdb = new StudentDB(students);
+
+        System.out.println(studentdb);
+        studentdb.addStudent(student4);
+        System.out.println(studentdb);
+        studentdb.removeStudent(1);
+        System.out.println(studentdb);
+
         try{
             System.out.println(studentdb.findById(4).toString());
         }
