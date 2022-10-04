@@ -27,4 +27,12 @@ public class StudentDB {
         int index = (int)(Math.random() * allStudents.length);
         return allStudents[index];
     }
+    public Students findById(int id){
+        for (Students student : allStudents){
+            if (student.getId() == id){
+                return student;
+            }
+        }
+        throw new IdNotFoundException("Kein Student gefunden");
+    }
 }
