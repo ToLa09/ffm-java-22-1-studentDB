@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -18,7 +20,10 @@ public class Main {
         Students student2 = new Students(2 , "Hans");
         Students student3 = new Students(3 , "Klaus");
 
-        Students [] students = {student1,student2,student3};
+        ArrayList<Students> students = new ArrayList<>();
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
 
         StudentDB studentdb = new StudentDB(students);
         try{
