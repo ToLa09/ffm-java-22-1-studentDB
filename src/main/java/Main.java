@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,12 +17,17 @@ public class Main {
     Schreibe einen Test mittels try/catch der dieses Verhalten überprüft.
     */
 
-        Students student1 = new Students(1 , "peter");
-        Students student2 = new Students(2 , "Hans");
-        Students student3 = new Students(3 , "Klaus");
-        Students student4 = new Students(3 , "Karl");
+        Student student1 = new Student(1 , "peter");
+        Student student2 = new Student(2 , "Hans");
+        Student student3 = new Student(3 , "Klaus");
+        Student student4 = new Student(4 , "Karl");
 
-        ArrayList<Students> students = new ArrayList<>(List.of(student1, student2, student3));
+        HashMap<Integer, Student> students = new HashMap<>(Map.of(
+                student1.getId(), student1,
+                student2.getId(), student2,
+                student3.getId(), student3
+        ));
+
 
         StudentDB studentdb = new StudentDB(students);
 

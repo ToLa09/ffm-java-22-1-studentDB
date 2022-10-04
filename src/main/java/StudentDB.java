@@ -1,18 +1,18 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class StudentDB {
 
-    private ArrayList<Students> allStudents;
+    private HashMap<Integer, Student> allStudents;
 
-    public StudentDB(ArrayList<Students> students) {
-        allStudents = students;
+    public StudentDB(HashMap<Integer, Student> students) {
+        this.allStudents = students;
     }
 
-    public ArrayList<Students> getAllStudents() {
+    public HashMap<Integer, Student> getAllStudents() {
         return allStudents;
     }
 
-    public void setAllStudents(ArrayList<Students> allStudents) {
+    public void setAllStudents(HashMap<Integer, Student> allStudents) {
         this.allStudents = allStudents;
     }
 
@@ -22,35 +22,26 @@ public class StudentDB {
                 "allStudents=" + allStudents +
                 '}';
     }
-    public Students randomStudent(){
+    public Student randomStudent(){
         int index = (int)(Math.random() * allStudents.size());
         return allStudents.get(index);
     }
-    public Students findById(int id){
-        for (Students student : allStudents){
-            if (student.getId() == id){
-                return student;
-            }
+    public Student findById(int id){
+        return allStudents.get(id);
+
         }
-        throw new IdNotFoundException("Kein Student gefunden");
+
+
+    public void addStudent(Student student) {
+        int id = student.getId();
+        if(allStudents.containsKey(id)) {
+            throw new RuntimeException("ID bereits vorhanden");
+        }
+        allStudents.put(id, student);
     }
 
-    public void addStudent(Students student) {
-        int id = student.getId();
-        for (Students s : allStudents) {
-            if (s.getId() == id) {
-                throw new RuntimeException("ID bereits vorhanden");
-            }
-        }
-        allStudents.add(student);
-    }
 
     public void removeStudent(int id) {
-        for (Students student : allStudents) {
-            if (student.getId() == id) {
-                allStudents.remove(student);
-                return;
-            }
-        }
+        allStudents.remove(id);
     }
 }

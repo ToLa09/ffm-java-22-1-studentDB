@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,11 +11,11 @@ class StudentDBTest {
     @Test
     public void getAllStudents() {
         //given
-        Students student = new Students(5, "peter");
-        ArrayList<Students> students = new ArrayList<>(List.of(student));
+        Student student = new Student(5, "peter");
+        HashMap<Integer, Student> students = new HashMap<>(Map.of(student.getId(),student));
         StudentDB studentdb = new StudentDB(students);
         //when
-        ArrayList<Students> actual = studentdb.getAllStudents();
+        HashMap<Integer, Student> actual = studentdb.getAllStudents();
         //then
         assertEquals(students, actual);
     }
@@ -21,46 +23,28 @@ class StudentDBTest {
     @Test
    void studentToString() {
         //given
-        Students student = new Students(5, "peter");
-        ArrayList<Students> students = new ArrayList<>(List.of(student));
+        Student student = new Student(5, "peter");
+        HashMap<Integer, Student> students = new HashMap<>(Map.of(student.getId(),student));
         StudentDB studentdb = new StudentDB(students);
         //when
         String actual = studentdb.toString();
         //then
-        String result = "StudentDB{allStudents=[Studenten{id=5, name='peter'}]}";
-        assertEquals(result, actual);
+        String expected = "StudentDB{allStudents={5=Studenten{id=5, name='peter'}}}";
+        assertEquals(expected, actual);
 
     }
 
-    @Test
-    void WrongIdThrowsException(){
-        //given
-        int id = 1;
-        Students student = new Students(5, "peter");
-        ArrayList<Students> students = new ArrayList<>(List.of(student));
-        StudentDB studentdb = new StudentDB(students);
-        String expectedMessage = "Kein Student gefunden";
-        //when
-        try{
-          studentdb.findById(id);
-          //then
-          fail();
-        }
-        catch (IdNotFoundException e){
-            assertEquals(expectedMessage, e.getMessage());
-        }
-    }
 
     @Test
-    void findByIdThrowsNoException() {
+    void findByIdReturnsObject() {
         //given
         int id = 5;
-        Students student = new Students(5, "peter");
-        ArrayList<Students> students = new ArrayList<>(List.of(student));
+        Student student = new Student(5, "peter");
+        HashMap<Integer, Student> students = new HashMap<>(Map.of(student.getId(),student));
         StudentDB studentdb = new StudentDB(students);
 
         //when
-        Students actual = studentdb.findById(id);
+        Student actual = studentdb.findById(id);
 
         //then
         assertEquals(student,actual);
