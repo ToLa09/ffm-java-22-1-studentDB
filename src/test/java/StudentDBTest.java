@@ -36,15 +36,30 @@ class StudentDBTest {
         Students student = new Students(5, "peter");
         Students[] students = {student};
         StudentDB studentdb = new StudentDB(students);
-        IdNotFoundException testException = new IdNotFoundException("Kein Student gefunden");
+        String expectedMessage = "Kein Student gefunden";
         //when
         try{
-          studentdb.findById(1);
+          studentdb.findById(id);
+          //then
+          fail();
         }
         catch (IdNotFoundException e){
-
+            assertEquals(expectedMessage, e.getMessage());
         }
+    }
+
+    @Test
+    void findByIdThrowsNoException() {
+        //given
+        int id = 5;
+        Students student = new Students(5, "peter");
+        Students[] students = {student};
+        StudentDB studentdb = new StudentDB(students);
+
+        //when
+        Students actual = studentdb.findById(id);
 
         //then
+        assertEquals(student,actual);
     }
 }
