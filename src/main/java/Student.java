@@ -1,6 +1,4 @@
 public class Student {
-
-
     private int id ;
     private String name;
 
@@ -27,7 +25,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Studenten{" +
+        return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

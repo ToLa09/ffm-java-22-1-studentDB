@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,8 @@ public class Main {
                 student3.getId(), student3
         ));
 
+        ComputerScienceStudent tobias = new ComputerScienceStudent(5, "tobias","java, html, css");
+        System.out.println(tobias);
 
         StudentDB studentdb = new StudentDB(students);
 
