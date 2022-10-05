@@ -1,9 +1,9 @@
 import org.junit.jupiter.api.Test;
+import students.ComputerScienceStudent;
+import students.Student;
+import students.StudentDB;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +11,7 @@ class StudentDBTest {
     @Test
     public void getAllStudents() {
         //given
-        Student student = new Student(5, "peter");
+        ComputerScienceStudent student = new ComputerScienceStudent(5, "peter", "Berlin", 71283, "java");
         HashMap<Integer, Student> students = new HashMap<>(Map.of(student.getId(),student));
         StudentDB studentdb = new StudentDB(students);
         //when
@@ -23,13 +23,13 @@ class StudentDBTest {
     @Test
    void studentToString() {
         //given
-        Student student = new Student(5, "peter");
+        ComputerScienceStudent student = new ComputerScienceStudent(5, "peter", "Berlin", 71283, "java");
         HashMap<Integer, Student> students = new HashMap<>(Map.of(student.getId(),student));
         StudentDB studentdb = new StudentDB(students);
         //when
         String actual = studentdb.toString();
         //then
-        String expected = "StudentDB{allStudents={5=Studenten{id=5, name='peter'}}}";
+        String expected = "students.StudentDB{allStudents={5=students.ComputerScienceStudent{programmingLanguages='java'} students.Student{id=5, name='peter'}}}";
         assertEquals(expected, actual);
 
     }
@@ -39,7 +39,7 @@ class StudentDBTest {
     void findByIdReturnsObject() {
         //given
         int id = 5;
-        Student student = new Student(5, "peter");
+        ComputerScienceStudent student = new ComputerScienceStudent(5, "peter", "Berlin", 71283, "java");
         HashMap<Integer, Student> students = new HashMap<>(Map.of(student.getId(),student));
         StudentDB studentdb = new StudentDB(students);
 

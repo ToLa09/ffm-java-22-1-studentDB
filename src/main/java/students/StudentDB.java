@@ -1,3 +1,6 @@
+package students;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StudentDB {
@@ -18,17 +21,20 @@ public class StudentDB {
 
     @Override
     public String toString() {
-        return "StudentDB{" +
+        return "students.StudentDB{" +
                 "allStudents=" + allStudents +
                 '}';
     }
     public Student randomStudent(){
-        int index = (int)(Math.random() * allStudents.size());
-        return allStudents.get(index);
+        ArrayList<Integer> keyList = new ArrayList<>(allStudents.keySet());
+
+        int index = (int)(Math.random() * keyList.size());
+        int key = keyList.get(index);
+
+        return allStudents.get(key);
     }
     public Student findById(int id){
         return allStudents.get(id);
-
         }
 
 
