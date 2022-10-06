@@ -31,18 +31,16 @@ public class Main {
                 student5.getId(), student5
         ));
 
-        ComputerScienceStudent tobias = new ComputerScienceStudent(59, "tobias", "Leipzig", 98599, "java, html, css");
-        System.out.println(tobias);
-
         StudentDB studentdb = new StudentDB(students);
 
-        System.out.println("Zufälliger students.Student: " + studentdb.randomStudent());
+        ComputerScienceStudent tobias = new ComputerScienceStudent(59, "tobias", "Leipzig", 98599, "java, html, css");
+        studentdb.addStudent(tobias);
 
-//        System.out.println(studentdb);
         studentdb.addStudent(student4);
-//        System.out.println(studentdb);
-//        studentdb.removeStudent(1);
-//        System.out.println(studentdb);
+
+        System.out.println("Zufälliger Student: " + studentdb.randomStudent());
+
+       studentdb.removeStudent(1);
 
         try{
             System.out.println(studentdb.findById(40).toString());
